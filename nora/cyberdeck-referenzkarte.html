@@ -1,0 +1,256 @@
+<title>Pi Referenzkarte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+
+<style>
+  :root{
+    --ground:#e9e6dd;
+    --surface:#f6f4ee;
+    --surface-2:#efece3;
+    --text:#1e1b15;
+    --muted:#6d6557;
+    --faint:#928a7a;
+    --border:#d7d2c4;
+    --border-strong:#c3bcaa;
+    --accent:#bd5f2a;
+    --accent-ink:#8f4416;
+    --accent-soft:#f1e3d5;
+    --danger:#a4402c;
+    --danger-soft:#f5e1db;
+    --ok:#4c7a45;
+    --ok-soft:#e4ecdd;
+    --shadow:0 1px 2px rgba(40,32,18,.05),0 6px 22px rgba(40,32,18,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#14120c;
+      --surface:#1e1b13;
+      --surface-2:#252115;
+      --text:#ece7da;
+      --muted:#9c9484;
+      --faint:#746c5c;
+      --border:#332e20;
+      --border-strong:#413a29;
+      --accent:#e08149;
+      --accent-ink:#ee9a6a;
+      --accent-soft:#2b2015;
+      --danger:#d97a63;
+      --danger-soft:#2b1a15;
+      --ok:#84b579;
+      --ok-soft:#1f2618;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#14120c;
+    --surface:#1e1b13;
+    --surface-2:#252115;
+    --text:#ece7da;
+    --muted:#9c9484;
+    --faint:#746c5c;
+    --border:#332e20;
+    --border-strong:#413a29;
+    --accent:#e08149;
+    --accent-ink:#ee9a6a;
+    --accent-soft:#2b2015;
+    --danger:#d97a63;
+    --danger-soft:#2b1a15;
+    --ok:#84b579;
+    --ok-soft:#1f2618;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--text);
+    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px 100px}
+
+  header.top{max-width:860px;margin:0 auto;padding:50px 22px 24px}
+  .eyebrow{
+    font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);font-weight:700;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);display:inline-block}
+  h1{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(2.1rem,6vw,3.2rem);line-height:1.04;letter-spacing:-.02em;
+    margin:.28em 0 .18em;text-wrap:balance;
+  }
+  h1 span{color:var(--accent)}
+  .lede{font-size:1.02rem;color:var(--muted);max-width:62ch;margin:0}
+
+  section{margin-top:40px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+  .sec-num{
+    font-family:"Space Mono",monospace;font-weight:700;font-size:.82rem;
+    color:var(--accent);letter-spacing:.05em;
+  }
+  h2{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:700;
+    font-size:clamp(1.35rem,3.2vw,1.7rem);letter-spacing:-.01em;margin:0;line-height:1.15;
+    text-wrap:balance;
+  }
+  .sec-sub{color:var(--muted);margin:.3em 0 0;font-size:.95rem;max-width:62ch}
+
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    box-shadow:var(--shadow);padding:20px 22px;
+  }
+  .card + .card{margin-top:12px}
+
+  .warn{
+    display:flex;gap:12px;padding:16px 18px;border-radius:12px;
+    background:var(--danger-soft);border:1px solid color-mix(in srgb,var(--danger) 35%,transparent);
+    margin-top:14px;
+  }
+  .warn .tag{
+    font-family:"Space Mono",monospace;font-weight:700;font-size:.74rem;
+    color:var(--danger);letter-spacing:.06em;white-space:nowrap;padding-top:1px;
+  }
+  .warn p{margin:0;font-size:.93rem;line-height:1.55}
+  .warn b{color:var(--text)}
+
+  .cmd{
+    display:block;font-family:"Space Mono",monospace;font-size:.86rem;
+    background:var(--surface-2);border:1px solid var(--border);border-radius:9px;
+    padding:11px 14px;margin:10px 0;color:var(--accent-ink);overflow-x:auto;
+    white-space:pre;
+  }
+  p{margin:.6em 0}
+  p code, li code{
+    font-family:"Space Mono",monospace;font-size:.84em;
+    background:var(--surface-2);border:1px solid var(--border);
+    padding:.08em .4em;border-radius:5px;color:var(--accent-ink);
+  }
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:600px){.grid2{grid-template-columns:1fr}}
+
+  .term-table{width:100%;border-collapse:collapse;font-size:.92rem}
+  .term-table th{
+    text-align:left;font-family:"Space Mono",monospace;font-size:.7rem;
+    text-transform:uppercase;letter-spacing:.08em;color:var(--faint);
+    padding:0 12px 10px 0;font-weight:700;border-bottom:1px solid var(--border);
+  }
+  .term-table td{
+    padding:11px 12px 11px 0;border-bottom:1px solid var(--border);
+    vertical-align:top;
+  }
+  .term-table tr:last-child td{border-bottom:none}
+  .term-table code{
+    font-family:"Space Mono",monospace;font-size:.86em;
+    background:var(--surface-2);border:1px solid var(--border);
+    padding:.15em .5em;border-radius:5px;color:var(--accent-ink);white-space:nowrap;
+  }
+  .term-table .desc{color:var(--muted);font-size:.9rem}
+  .table-wrap{overflow-x:auto}
+
+  footer{
+    max-width:860px;margin:52px auto 0;padding:22px 22px 0;
+    border-top:1px solid var(--border);color:var(--faint);
+    font-family:"Space Mono",monospace;font-size:.76rem;letter-spacing:.03em;
+  }
+</style>
+
+<header class="top">
+  <div class="eyebrow">Referenz · Raspberry Pi</div>
+  <h1>Damit du nicht bei<br>jedem <span>Handgriff</span> fragen musst</h1>
+  <p class="lede">Ein paar Grundlagen, die beim ersten Linux-Projekt viel erklären &mdash; warum manche Dinge so funktionieren, wie sie funktionieren, und worauf du achten solltest, bevor was kaputtgeht.</p>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span>
+      <div><h2>Nie einfach den Stecker ziehen</h2>
+      <p class="sec-sub">Der wichtigste Punkt auf dieser Seite.</p></div>
+    </div>
+    <div class="card">
+      <p>Anders als bei einem normalen Rechner hat der Pi keine Festplatte, die Schreibvorgänge sauber abschließt, wenn der Strom weg ist. Die microSD-Karte kann dabei <b>beschädigt werden</b> &mdash; im schlimmsten Fall ist das ganze System hinüber und du musst neu flashen.</p>
+      <p>Immer sauber runterfahren, bevor du den Stecker ziehst:</p>
+      <code class="cmd">sudo shutdown -h now</code>
+      <p>Warte, bis die grüne Aktivitäts-LED <b>aufhört zu blinken</b> (ca. 10&ndash;20 Sekunden), erst dann Strom trennen. Für einen Neustart statt Herunterfahren: <code>sudo reboot</code> &mdash; danach trennt sich auch eine laufende SSH-Verbindung automatisch, das ist normal.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span>
+      <div><h2>Die Befehle, die ständig vorkommen</h2>
+      <p class="sec-sub">Copy-Paste-tauglich für dein Terminal.</p></div>
+    </div>
+    <div class="card table-wrap">
+      <table class="term-table">
+        <tr><th>Befehl</th><th>Was er tut</th></tr>
+        <tr><td><code>sudo &hellip;</code></td><td class="desc">"Als Administrator ausführen." Ohne das brechen viele Befehle mit <code>Permission denied</code> ab.</td></tr>
+        <tr><td><code>sudo apt update</code></td><td class="desc">Prüft, welche Updates verfügbar sind (lädt noch nichts herunter).</td></tr>
+        <tr><td><code>sudo apt full-upgrade -y</code></td><td class="desc">Installiert die gefundenen Updates tatsächlich.</td></tr>
+        <tr><td><code>sudo apt install &lt;name&gt;</code></td><td class="desc">Installiert ein neues Programm.</td></tr>
+        <tr><td><code>sudo raspi-config</code></td><td class="desc">Zentrales Einstellungsmenü: WLAN, Bluetooth, Auflösung, Lokalisierung.</td></tr>
+        <tr><td><code>vcgencmd measure_temp</code></td><td class="desc">Zeigt die aktuelle Prozessortemperatur.</td></tr>
+        <tr><td><code>df -h</code></td><td class="desc">Zeigt, wie voll die SD-Karte ist.</td></tr>
+        <tr><td><code>ip a</code></td><td class="desc">Zeigt die IP-Adresse des Pi im Netzwerk.</td></tr>
+        <tr><td><code>htop</code></td><td class="desc">Live-Übersicht über CPU/RAM-Auslastung (ggf. erst installieren).</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span>
+      <div><h2>Warm laufen ist normal &mdash; zu heiß nicht</h2>
+      <p class="sec-sub">Besonders relevant, weil dein Pi später im geschlossenen Koffer sitzt.</p></div>
+    </div>
+    <div class="card">
+      <p>Ab etwa <b>80&nbsp;&deg;C</b> drosselt der Pi automatisch seine Leistung, um sich zu schützen (Throttling) &mdash; das Deck wird dann spürbar langsamer. Regelmäßig checken:</p>
+      <code class="cmd">vcgencmd measure_temp</code>
+      <p>Deshalb der Kühlkörper/Lüfter aus der Zusatz-Werkzeug-Liste: im offenen Aufbau ist das meist kein Thema, im geschlossenen Holzkoffer ohne Belüftung schon.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span>
+      <div><h2>Backup, sobald es läuft</h2>
+      <p class="sec-sub">Eine Stunde Aufwand, die dir später Tage sparen kann.</p></div>
+    </div>
+    <div class="card">
+      <p>Sobald dein Setup steht (WLAN, SSH, Display &mdash; alles läuft), lohnt sich ein <b>Image-Backup der SD-Karte</b>. Der Raspberry Pi Imager kann das, ebenso Tools wie „Etcher" oder das Mac-eigene <code>dd</code>. Geht später etwas kaputt &mdash; korrupte Karte, verkorkste Config &mdash; spielst du das Backup einfach neu auf, statt wieder bei Null anzufangen.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span>
+      <div><h2>Zwei Dinge, die dich sonst überraschen</h2></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <p style="margin-top:0"><b>Statische Elektrizität.</b> Bevor du die Platine anfasst (Kühlkörper ankleben, Kabel stecken), kurz einen geerdeten Metallgegenstand berühren &mdash; Heizung, Wasserhahn. Besonders im Winter auf trockenem Teppich kann eine statische Entladung die Platine beschädigen.</p>
+      </div>
+      <div class="card">
+        <p style="margin-top:0"><b>Powerbank-Abschaltung.</b> Manche Powerbanks schalten sich bei zu geringem Stromfluss automatisch ab (gedacht fürs Handy-Laden). Schaltet sich dein Pi im Ruhezustand unerwartet ab, kann das die Ursache sein &mdash; dann braucht es eine Powerbank ohne diese Auto-Off-Funktion.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span>
+      <div><h2>Später sinnvoll, jetzt kein Muss</h2></div>
+    </div>
+    <div class="warn">
+      <span class="tag">SPÄTER</span>
+      <p>Aktuell loggst du dich mit einem <b>Passwort</b> per SSH ein &mdash; für zuhause völlig okay. Nimmst du dein Cyberdeck später mit in fremde Netzwerke (Café, Konferenz), ist ein <b>SSH-Schlüssel statt Passwort</b> sicherer und bequemer (kein Tippen mehr nötig). Kein Muss für jetzt, aber gut zu wissen, dass die Option existiert.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>Cyberdeck · Referenzkarte</footer>
